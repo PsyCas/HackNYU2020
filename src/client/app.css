@@ -1,8 +1,14 @@
-h1 {
-  color: green;
+body {
+  background-color: black;
+  font-family: 'Quicksand', sans-serif;
+  color: #FFC364;
 }
 
-body {
-  text-align: center;
+noscript {
   margin: auto;
+  color: #FFC364;
+  background-color: rgb(42, 42, 42);
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1rem;
 }
