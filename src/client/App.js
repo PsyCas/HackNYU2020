@@ -13,6 +13,10 @@ export default class App extends Component {
 
   }
 
+  onSetSidebarOpen = () => {
+    this.setState({sidebarOpen: true})
+  }
+
   render() {
     return (
       <div className={css.a}>
