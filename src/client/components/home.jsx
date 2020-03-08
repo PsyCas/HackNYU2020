@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Switch from "./Utilities/Switch";
+import GoogleMapReact from "google-map-react";
 const css = require("./home.css");
+const mapStyle = require("./mapStyle.json")
 const search_icon_image = require("./search_icon.svg");
 const PROD = process.env.PRODUCTION;
 
@@ -77,116 +79,141 @@ export default class Home extends Component {
     });
   };
 
+  
+
   render() {
     return (
       <div className={css.a}>
-        <div className={this.state.searchActive ? css.searchOpen : css.hide}>
-          <div
-            className={
-              this.state.more_options
-                ? css.additionalShowSearch
-                : css.searchWrapper
-            }
-          >
-            <input
-              onChange={this.update}
-              value={this.state.search_string}
-              placeholder="Search..."
-              name="search_string"
-              className={css.searchInput}
-            ></input>
-            <img
-              src={search_icon_image}
-              className={css.searchIcon}
-              alt=""
-              onClick={this.search}
-            />
-          </div>
-          <div
-            className={this.state.more_options ? css.additionalShow : css.hide}
-          >
-            <div className={css.optionsBlock}>
-              <div>Borough Selection: </div>
-              <Switch
-                name="manhattan"
-                value={this.state.manhattan}
+        <div className={css.map}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: "AIzaSyB2EeKaex3mjveYtL1DrMAs-4-hl--E0l8" }}
+            defaultCenter={{lat: 40.735688, lng: -73.993898}}
+            defaultZoom={12}
+            defaultOptions={{
+              disableDefaultUI: true, // disable default map UI
+              draggable: true, // make map draggable
+              keyboardShortcuts: false, // disable keyboard shortcuts
+              scaleControl: true, // allow scale controle
+              scrollwheel: true, // allow scroll wheel
+              styles: mapStyle // change default map styles
+            }}
+          ></GoogleMapReact>
+        </div>
+        <div className={css.contentWrapper}>
+          <div className={this.state.searchActive ? css.searchOpen : css.hide}>
+            <div
+              className={
+                this.state.more_options
+                  ? css.additionalShowSearch
+                  : css.searchWrapper
+              }
+            >
+              <input
                 onChange={this.update}
-                label="Manhattan"
-              />
-              <Switch
-                name="brooklyn"
-                value={this.state.brooklyn}
-                onChange={this.update}
-                label="Brooklyn"
-              />
-              <Switch
-                name="queens"
-                value={this.state.queens}
-                onChange={this.update}
-                label="Queens"
-              />
-              <Switch
-                name="bronx"
-                value={this.state.bronx}
-                onChange={this.update}
-                label="Bronx"
-              />
-              <Switch
-                name="staten_island"
-                value={this.state.staten_island}
-                onChange={this.update}
-                label="Staten Island"
+                value={this.state.search_string}
+                placeholder="Search..."
+                name="search_string"
+                className={css.searchInput}
+              ></input>
+              <img
+                src={search_icon_image}
+                className={css.searchIcon}
+                alt=""
+                onClick={this.search}
               />
             </div>
-            <div>
-              <div>Rating Selection:</div>
-              <Switch
-                name="rating_a"
-                value={this.state.rating_a}
-                onChange={this.update}
-                label="A"
-              />
-              <Switch
-                name="rating_b"
-                value={this.state.rating_b}
-                onChange={this.update}
-                label="B"
-              />
-              <Switch
-                name="rating_c"
-                value={this.state.rating_c}
-                onChange={this.update}
-                label="C"
-              />
-              <Switch
-                name="rating_pending"
-                value={this.state.rating_pending}
-                onChange={this.update}
-                label="Pending"
-              />
-              <Switch
-                name="rating_closed"
-                value={this.state.rating_closed}
-                onChange={this.update}
-                label="Closed"
-              />
+            <div
+              className={
+                this.state.more_options
+                  ? css.additionalShow
+                  : css.additionalHide
+              }
+            >
+              <div className={css.optionsBlock}>
+                <div>Borough Selection: </div>
+                <Switch
+                  name="manhattan"
+                  value={this.state.manhattan}
+                  onChange={this.update}
+                  label="Manhattan"
+                />
+                <Switch
+                  name="brooklyn"
+                  value={this.state.brooklyn}
+                  onChange={this.update}
+                  label="Brooklyn"
+                />
+                <Switch
+                  name="queens"
+                  value={this.state.queens}
+                  onChange={this.update}
+                  label="Queens"
+                />
+                <Switch
+                  name="bronx"
+                  value={this.state.bronx}
+                  onChange={this.update}
+                  label="Bronx"
+                />
+                <Switch
+                  name="staten_island"
+                  value={this.state.staten_island}
+                  onChange={this.update}
+                  label="Staten Island"
+                />
+              </div>
+              <div>
+                <div>Rating Selection:</div>
+                <Switch
+                  name="rating_a"
+                  value={this.state.rating_a}
+                  onChange={this.update}
+                  label="A"
+                />
+                <Switch
+                  name="rating_b"
+                  value={this.state.rating_b}
+                  onChange={this.update}
+                  label="B"
+                />
+                <Switch
+                  name="rating_c"
+                  value={this.state.rating_c}
+                  onChange={this.update}
+                  label="C"
+                />
+                <Switch
+                  name="rating_pending"
+                  value={this.state.rating_pending}
+                  onChange={this.update}
+                  label="Pending"
+                />
+                <Switch
+                  name="rating_closed"
+                  value={this.state.rating_closed}
+                  onChange={this.update}
+                  label="Closed"
+                />
+              </div>
             </div>
-          </div>
-          <div></div>
-          <div
-            className={this.state.more_options ? css.hide : css.dropdownWrapper}
-            onClick={this.toggleMoreOptions}
-          >
-            <div className={css.dropdownInnerWrapper}>
-              <div className={css.dropdown}></div>
+            <div></div>
+            <div
+              className={
+                this.state.more_options ? css.hide : css.dropdownWrapper
+              }
+              onClick={this.toggleMoreOptions}
+            >
+              <div className={css.dropdownInnerWrapper}>
+                <div className={css.dropdown}></div>
+              </div>
             </div>
-          </div>
-          <div
-            className={this.state.more_options ? css.dropdownWrapper : css.hide}
-            onClick={this.toggleMoreOptions}
-          >
-            <div className={css.dropdownInnerWrapper}>
-              <div className={css.dropup}></div>
+            <div
+              className={this.state.more_options ? css.dropupWrapper : css.hide}
+              onClick={this.toggleMoreOptions}
+            >
+              <div className={css.dropdownInnerWrapper}>
+                <div className={css.dropup}></div>
+              </div>
             </div>
           </div>
         </div>
