@@ -1,0 +1,53 @@
+.searchIcon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.searchInput {
+  border: none;
+  margin: none;
+  margin-right: 0.2rem;
+  padding: 0.2rem;
+  width: 50vw;
+  height: 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgb(64, 64, 64);
+  color: white;
+}
+
+.searchOpen {
+  height: 10rem;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.dropdownWrapper {
+  width: 99vw;
+}
+
+.dropdownInnerWrapper {
+  background-color: rgb(59, 59, 59);
+  border: none;
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+
+.dropdown {
+  margin: auto;
+  border: none;
+  height: 0;
+  width: 0;
+  border-top: 2rem;
+  color: grey;
+}
