@@ -45,7 +45,7 @@ export default class Switch extends Component {
           />
           <span className={css.slider}></span>
         </div>
-        <div className={css.label}>{this.props.label}</div>
+        <div className={css.label} onClick={this.onChangeBehavior}>{this.props.label}</div>
       </div>
     );
   }

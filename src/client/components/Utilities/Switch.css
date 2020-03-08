@@ -38,11 +38,11 @@
 }
 
 input:checked + .slider {
-  background-color: rgb(33, 196, 0);
+  background-color: rgb(255, 195, 100);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgb(33, 196, 0);
+  box-shadow: 0 0 1px rgb(255, 195, 100);
 }
 
 input:checked + .slider:before {
@@ -54,4 +54,8 @@ input:checked + .slider:before {
 .row {
   display: flex;
   flex-flow: row;
+}
+
+.label {
+  margin-left: 0.2rem;
 }
