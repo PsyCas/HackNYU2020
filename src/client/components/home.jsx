@@ -27,6 +27,7 @@ export default class Home extends Component {
       error: false,
       searchOpen: true,
       restaurants: [],
+      selected: {},
       searchActive: true,
       additional_show: false,
       more_options: false
@@ -86,8 +87,31 @@ export default class Home extends Component {
     }
   };
 
+  select = (e) => {
+    let ps = this.state
+    let new_sel = ps.restaurants.find((i) => i.id == e.id)
+    this.setState({
+      selected: new_sel
+    })
+  }
+
+  close = () => {
+    this.setState({
+      selected: {}
+    })
+  }
+
   render() {
-    console.log(process.env);
+    let waypoint;
+    if (this.state.selected != {}) {
+      waypoint = (
+        <div lat={40.735688} lng={-73.993898}>
+          Hi
+        </div>
+      );
+    } else {
+      waypoint = null;
+    }
     return (
       <div className={css.a}>
         <div className={css.map}>
@@ -104,7 +128,11 @@ export default class Home extends Component {
               scaleControl: true,
               scrollwheel: true
             }}
-          ></GoogleMapReact>
+          >
+            <div lat={40.735688} lng={-73.993898} className={css.markerOutside}>
+              <div className={css.markerInside}></div>
+            </div>
+          </GoogleMapReact>
         </div>
         <div className={css.contentWrapper}>
           <div className={this.state.searchActive ? css.searchOpen : css.hide}>
@@ -223,6 +251,14 @@ export default class Home extends Component {
                 <div className={css.dropup}></div>
               </div>
             </div>
+            {this.state.restaurants != [] && this.state.selected != {} ? <div className={css.list}>
+              {this.state.restaurants.map((elem) => {
+                return (<div className={css.row} key={elem.id} onClick={this.select} id={elem.id}>
+                <div className={css.lname}>{elem.name}</div> 
+                {/* More element things here */}
+                </div>)
+              })}
+            </div> : null}
           </div>
         </div>
       </div>
