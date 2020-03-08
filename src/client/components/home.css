@@ -1,26 +1,38 @@
 .searchIcon {
   width: 2rem;
   height: 2rem;
+  background-color: rgb(64, 64, 64);
+  padding: 0.2rem;
+  margin-left: 0;
+  padding-right: 0.4rem;
+  /* border-top-right-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem; */
+}
+
+.searchIcon:hover {
+  cursor: pointer;
 }
 
 .searchInput {
   border: none;
   margin: none;
-  margin-right: 0.2rem;
   padding: 0.2rem;
-  width: 50vw;
+  width: 16rem;
   height: 2rem;
   font-size: 1.2rem;
   border: none;
-  border-radius: 0.2rem;
+  /* border-top-left-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem; */
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
   background-color: rgb(64, 64, 64);
   color: white;
 }
 
 .searchOpen {
-  height: 10rem;
+  height: fit-content;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -36,18 +48,75 @@
   width: 99vw;
 }
 
+.dropdownWrapper:hover {
+  cursor: pointer;
+}
+
 .dropdownInnerWrapper {
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(49, 49, 49);
   border: none;
-  border-bottom-left-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  width: 2rem;
+  height: 1.2rem;
+  margin: auto;
+  position: relative;
 }
 
 .dropdown {
-  margin: auto;
-  border: none;
-  height: 0;
-  width: 0;
-  border-top: 2rem;
-  color: grey;
+  position: absolute;
+  top: 0.3rem;
+  left: 0.4rem;
+  border-left: 0.6rem solid transparent;
+  border-right: 0.6rem solid transparent;
+  
+  border-top: 0.6rem solid rgb(154, 154, 154);
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.dropup {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.4rem;
+  border-left: 0.6rem solid transparent;
+  border-right: 0.6rem solid transparent;
+  
+  border-bottom: 0.6rem solid rgb(154, 154, 154);
+}
+
+.dropup:hover {
+  cursor: pointer;
+}
+
+.searchWrapper, .additionalShowSearch {
+  display: flex;
+  flex-flow: row;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  /* border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem; */
+}
+
+.additionalShowSearch {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.additionalShow {
+  background-color: rgb(49, 49, 49);
+  width: 18.4rem;
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+  display: flex;
+  flex-flow: row;
+}
+
+.optionsBlock {
+  display: flex;
+  flex-flow: column;
+  margin-right: 1rem;
 }
