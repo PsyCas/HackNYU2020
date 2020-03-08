@@ -3,7 +3,7 @@ import Axios from "axios";
 import Switch from "./Utilities/Switch";
 import GoogleMapReact from "google-map-react";
 const css = require("./home.css");
-const mapStyle = require("./mapStyle.json")
+const mapStyle = require("./mapStyle.json");
 const search_icon_image = require("./search_icon.svg");
 const PROD = process.env.PRODUCTION;
 
@@ -38,7 +38,8 @@ export default class Home extends Component {
     this.setState({
       loading: true
     });
-    Axios.post(`${PROD ? "" : "http://localhost:8080"}/api/search`, {
+    // Axios.post(`${PROD ? "" : "http://localhost:8080"}/api/search`, {
+    Axios.post(`http://localhost:8080/api/search`, {
       search: this.state.search_string,
       manhattan: this.state.manhattan,
       brooklyn: this.state.brooklyn,
@@ -79,23 +80,29 @@ export default class Home extends Component {
     });
   };
 
-  
+  handleKeyDown = e => {
+    if (e.key === "Enter") {
+      this.search();
+    }
+  };
 
   render() {
+    console.log(process.env);
     return (
       <div className={css.a}>
         <div className={css.map}>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: "AIzaSyB2EeKaex3mjveYtL1DrMAs-4-hl--E0l8" }}
-            defaultCenter={{lat: 40.735688, lng: -73.993898}}
-            defaultZoom={12}
-            defaultOptions={{
-              disableDefaultUI: true, // disable default map UI
-              draggable: true, // make map draggable
-              keyboardShortcuts: false, // disable keyboard shortcuts
-              scaleControl: true, // allow scale controle
-              scrollwheel: true, // allow scroll wheel
-              styles: mapStyle // change default map styles
+            bootstrapURLKeys={{
+              key: "AIzaSyB2EeKaex3mjveYtL1DrMAs-4-hl--E0l8"
+            }}
+            defaultCenter={{ lat: 40.735688, lng: -73.993898 }}
+            defaultZoom={14}
+            options={{
+              styles: mapStyle,
+              disableDefaultUI: true,
+              keyboardShortcuts: false,
+              scaleControl: true,
+              scrollwheel: true
             }}
           ></GoogleMapReact>
         </div>
@@ -114,6 +121,7 @@ export default class Home extends Component {
                 placeholder="Search..."
                 name="search_string"
                 className={css.searchInput}
+                onKeyDown={this.handleKeyDown}
               ></input>
               <img
                 src={search_icon_image}
