@@ -1,5 +1,4 @@
 const express = require('express');
-const os = require('os');
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -12,6 +11,7 @@ app.use(express.static('dist'));
 
 // routes
 app.use('/api/getPlaces', require("./getPlaces.js"));
+app.use('/api/getSentiment', require("./getSentiment.js"));
 
 //init server port - 8080
 app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
