@@ -6,3 +6,21 @@ body {
   text-align: center;
   margin: auto;
 }
+
+.root-app-flex-main{
+  height: 100vh;
+  width: 100vw;
+}
+
+.root-sidebar-region-flex-2{
+  height: 100vh;
+  width: 100vw;
+  background: red;
+}
+
+.root-map-region-flex-2{
+  height: 100vh;
+  width: 100vw;
+  background: #3a3a3a;
+  border: none;
+}
