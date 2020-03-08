@@ -5,13 +5,13 @@ require('dotenv').config();
 const Client = require('@googlemaps/google-maps-services-js').Client;
 const client = new Client({});
 
-router.get("/", (req, res) => {
-    
+// gets request query from the users and sends back the first response. 
+router.get("/:query", (req, res) => {
     client
     .findPlaceFromText({
       params: {
         key: process.env.MAPS_API,
-        input: "Times Square, New York",
+        input: req.params.query,
         inputtype: "textquery"
       },
         timeout: 1000 // milliseconds
@@ -28,17 +28,16 @@ router.get("/", (req, res) => {
         })
         .then((r) => {
           console.log(r.data);
-          res.send("<h1>did it!</h1>")
+          res.send(r.data)
         })
         .catch(err => {
           console.log(err);
-          res.send("<h1>BIg fail!</h1>")
+          res.send(false);  
         })  
       })
       .catch(e => {
         console.log(e);
-        
-        res.send("<h1>BIg fail!</h1>")
+        res.send(false);
       });
 });
 
