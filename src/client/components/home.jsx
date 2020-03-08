@@ -33,7 +33,9 @@ export default class Home extends Component {
       more_options: false
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    Axios.get("http://localhost:8080/api/getPlaces").then((res)=>{this.setState({restaurants: res.data})})
+  }
 
   search = () => {
     this.setState({
