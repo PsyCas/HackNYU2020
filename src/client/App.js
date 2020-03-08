@@ -3,7 +3,6 @@ import Iframe from 'react-iframe';
 import "./app.css";
 
 import Sidebar from "react-sidebar";
-
 const APP_KEY = "AIzaSyB2EeKaex3mjveYtL1DrMAs-4-hl--E0l8"; //<-- lol
 
 export default class App extends Component {
